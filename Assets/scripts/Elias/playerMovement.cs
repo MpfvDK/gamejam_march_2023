@@ -41,7 +41,11 @@ public class playerMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(xInput * moveSpeed, rb.velocity.y);
+
+        if (onLadder && !onGround)
+            rb.velocity = new Vector2(0, rb.velocity.y);
+        else
+            rb.velocity = new Vector2(xInput * moveSpeed, rb.velocity.y);
 
         if (Input.GetKey(KeyCode.D))
         {
