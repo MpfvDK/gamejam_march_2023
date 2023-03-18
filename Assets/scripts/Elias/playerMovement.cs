@@ -8,6 +8,7 @@ public class playerMovement : MonoBehaviour
     public float moveSpeed;
     public float ladderSpeed;
     public float jumpHeight;
+    public GameObject player;
     float xInput;
     float yInput;
     public bool jumping = false;
@@ -42,7 +43,15 @@ public class playerMovement : MonoBehaviour
     {
         rb.velocity = new Vector2(xInput * moveSpeed, rb.velocity.y);
 
+        if (Input.GetKey(KeyCode.D))
+        {
+            player.GetComponent<SpriteRenderer>().flipX = false;
+        }
 
+        if (Input.GetKey(KeyCode.A))
+        {
+            player.GetComponent<SpriteRenderer>().flipX = true;
+        }
 
         if (onLadder)
         {
