@@ -8,10 +8,7 @@ public class KillPlayerOnTouch : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-           
-                Destroy(collision.gameObject);
-            
-           
+            collision.gameObject.GetComponent<restart>().restartLevel();
         }
     }
 }
