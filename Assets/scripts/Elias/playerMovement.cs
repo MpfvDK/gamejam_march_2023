@@ -12,6 +12,8 @@ public class playerMovement : MonoBehaviour
     float xInput;
     float yInput;
     public bool jumping = false;
+    public bool doublejumpUsed = false;
+    public bool dbPlaceholder = false;
     public bool onGround = true;
     public bool onLadder = false;
     private void Start()
@@ -33,9 +35,21 @@ public class playerMovement : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))
             {
-                if (!jumping)
-                    rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y + jumpHeight);
-                jumping = true;
+                if (!doublejumpUsed)
+                {
+                    if (dbPlaceholder)
+                    {
+                        doublejumpUsed = true;
+                        rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y + jumpHeight);
+                    }
+                    else
+                    {
+                        float dbHeight = jumpHeight / 0.5f;
+                        dbPlaceholder = true;
+                        rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y / 0.1f);
+                        rb.velocity = new Vector2(rb.velocity.x * 1.5f, rb.velocity.y + dbHeight);
+                    }
+                }
             }
         }
     }
@@ -79,6 +93,8 @@ public class playerMovement : MonoBehaviour
         {
             onGround = true;
             jumping = false;
+            doublejumpUsed = false;
+            dbPlaceholder = false;
         }
         if (collision.collider.tag == "ladder")
         {
@@ -90,6 +106,7 @@ public class playerMovement : MonoBehaviour
         if (collision.collider.tag == "floor")
         {
             onGround = false;
+            dbPlaceholder = true;
         }
         
     }
