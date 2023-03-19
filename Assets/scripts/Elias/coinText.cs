@@ -10,6 +10,7 @@ public class coinText : MonoBehaviour
     public void addCoin()
     {
         coins++;
+        text.text = "Coins: " + coins.ToString();
     }
     private void FixedUpdate()
     {
