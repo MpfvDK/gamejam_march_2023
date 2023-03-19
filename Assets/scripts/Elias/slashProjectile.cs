@@ -9,6 +9,7 @@ public class slashProjectile : MonoBehaviour
     public Rigidbody2D rb;
     public AudioClip SwordSlash;
     public AudioSource AudioSource;
+    public float lifetime;
 
     private void Start()
     {
@@ -29,5 +30,10 @@ public class slashProjectile : MonoBehaviour
             Destroy(gameObject);
             AudioSource.PlayOneShot(SwordSlash);
         }
+    }
+    IEnumerator attack(float timer)
+    {
+        yield return new WaitForSeconds(timer);
+        Destroy(gameObject);
     }
 }

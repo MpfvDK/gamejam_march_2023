@@ -99,10 +99,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69237fcb0351fc04ebea7e286dbbd0e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7.5
+  speed: 10
   rb: {fileID: 3102512304589512492}
   SwordSlash: {fileID: 8300000, guid: 3f915b649ef634d0b9d83ccd2b28108f, type: 3}
   AudioSource: {fileID: 0}
+  lifetime: 1.5
 --- !u!50 &3102512304589512492
 Rigidbody2D:
   serializedVersion: 4
