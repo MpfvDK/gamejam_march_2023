@@ -21,6 +21,7 @@ public class slashProjectile : MonoBehaviour
         rb.freezeRotation = true;
         rb.gravityScale = 0;
         rb.velocity = transform.right * speed;
+        StartCoroutine(waitKill());
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -31,9 +32,9 @@ public class slashProjectile : MonoBehaviour
             AudioSource.PlayOneShot(SwordSlash);
         }
     }
-    IEnumerator attack(float timer)
+    IEnumerator waitKill()
     {
-        yield return new WaitForSeconds(timer);
+        yield return new WaitForSeconds(lifetime);
         Destroy(gameObject);
     }
 }
